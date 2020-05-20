@@ -31,12 +31,12 @@ class ApplicationController < ActionController::API
   def jwt_encode(user_id)
     expores_in = 1.week.from_now.to_i
     preload = { user_id: user_id, exp: expores_in }
-    JWT.encode(preload, 'SECRET_KEY', 'HS256')
+    JWT.encode(preload, ENV['SECRET_KEY'], 'HS256')
   end
 
   private
 
   def jwt_decode(token)
-    decoded_token = JWT.decode(token, 'SECRET_KEY', true, { algorithm: 'HS256' })
+    decoded_token = JWT.decode(token, ENV['SECRET_KEY'], true, { algorithm: 'HS256' })
   end
 end
