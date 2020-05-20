@@ -1,9 +1,7 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authenticate, only: [:show, :update]
-  before_action :params_user_check, only: [:show, :update]
+  before_action :authenticate, only: [:profile]
 
-  def show
-    @user = User.find(params[:id])
+  def profile
   end
 
   def create
@@ -36,10 +34,6 @@ class Api::V1::UsersController < ApplicationController
 
   def user_params(params)
     params.permit(:name, :email, :password)
-  end
-
-  def params_user_check
-    raise 'This user information is not available' if current_user.id.to_s != params[:id]
   end
 
   def token_set(user)

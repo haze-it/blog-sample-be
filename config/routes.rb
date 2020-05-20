@@ -6,7 +6,8 @@ Rails.application.routes.draw do
       post 'signin', to: 'users#signin', as: :signin
       post 'signup', to: 'users#create', as: :signup
       post 'auth', to: 'users#auth', as: :auth
-      resources :users, only: [:show, :create]
+      get 'profile', to: 'users#profile', as: :profile
+      resources :users, only: [:create]
     end
   end
 end
