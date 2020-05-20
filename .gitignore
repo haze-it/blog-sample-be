@@ -30,3 +30,5 @@
 # Ignore mysqldata
 /db/mysql_data/*
 !/db/mysql_data/.keep
+
+.env
