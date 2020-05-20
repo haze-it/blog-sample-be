@@ -28,5 +28,5 @@
 /config/master.key
 
 # Ignore mysqldata
-/db/mysqldata/*
-!/db/mysqldata/.keep
+/db/mysql_data/*
+!/db/mysql_data/.keep
