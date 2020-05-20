@@ -45,4 +45,5 @@ class Api::V1::UsersController < ApplicationController
     @token = jwt_encode(user.id)
     @user = user
     response.headers['X-Authentication-Token'] = @token
+  end
 end
