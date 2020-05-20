@@ -9,6 +9,7 @@ class Api::V1::UsersController < ApplicationController
   def create
     user_param = user_params(params)
     user = User.new(user_param)
+
     if user.invalid?
       errors = user.errors
       render json: { error: errors }, status: 400
@@ -16,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     user.save!
-    auth_set(user.id)
+    token_set(user)
   end
 
   def signin
@@ -34,7 +35,7 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params(params)
-    params.require(:user).permit(:name, :email, :password)
+    params.permit(:name, :email, :password)
   end
 
   def params_user_check
